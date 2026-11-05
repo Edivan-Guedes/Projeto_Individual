@@ -1,0 +1,46 @@
+:root {
+  --tamanho-header: 90px;
+}
+
+.header {
+  height: var(--tamanho-header);
+  border-bottom: 2px solid #E33535;
+  background-color: #FFFF;
+}
+
+.header .container-header {
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.container-header {
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+
+.logotipo img {
+  margin-top: 8px;
+  width: 200px;
+}
+
+.navbar {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.navbar button {
+    border-color: #E33535;
+    border-radius: 5px;
+    background-color: #E33535;
+    color: #FFFF;
+
+}
+
+.icone-home img{
+    width: 100px;
+}

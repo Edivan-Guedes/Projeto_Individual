@@ -1,0 +1,61 @@
+:root {
+  --tamanho-header: 70px;
+}
+
+.header {
+  height: var(--tamanho-header);
+  border-bottom: 2px solid #E33535;
+  background-color: #FFFF;
+}
+
+.header .container-header {
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.header a {
+  text-decoration: none;
+  color: #404040;
+}
+
+.header li{
+  color: #404040;
+} 
+
+.container-header {
+  display: flex;
+  width: 95%;
+  margin: auto;
+}
+
+.logotipo img {
+  margin-top: 8px;
+  width: 200px;
+}
+
+.agora {
+  font-weight: 800;
+}
+
+.navbar {
+  width: 330px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.navbar button {
+  cursor: pointer;
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+  background-color: #E33535;
+  width: 85px;
+  height: 7%;
+}
