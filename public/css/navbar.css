@@ -1,5 +1,5 @@
 :root {
-  --tamanho-header: 70px;
+  --tamanho-header: 80px;
 }
 
 .header {
@@ -52,10 +52,10 @@
   border: 0;
   text-align: center;
   border-radius: 5px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 16px;
   color: #fff;
   background-color: #E33535;
   width: 85px;
-  height: 7%;
+  height: 20%;
 }
