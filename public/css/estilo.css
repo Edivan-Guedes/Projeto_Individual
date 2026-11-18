@@ -131,6 +131,7 @@ body {
   height: var(--tamanho-login);
   background-image: url('../assets/imgs/fundo_cadastro.png');
   background-size:cover;
+  background-position: bottom;
 }
 
 
