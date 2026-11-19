@@ -8,7 +8,12 @@ function exibirItemNavbar(id, exibir) {
     var item = document.getElementById(id);
 
     if (item) {
-        item.style.display = exibir ? "" : "none";
+
+        if (exibir) {
+            item.style.display = "";
+        } else {
+            item.style.display = "none";
+        }
     }
 }
 

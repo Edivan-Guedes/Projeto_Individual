@@ -12,7 +12,7 @@ A Home apresenta o projeto. A área administrativa é separada e possui acesso p
 - Autenticação e cadastro: rotas existentes da Web Data Viz ainda dependem da estrutura AquaTech; adaptar mediante requisição específica.
 - Dashboard: protótipo inicial no Figma, com indicadores de cadastro e listagem de líderes. Não confundir com o dashboard legado AquaTech.
 - Três telas planejadas: cadastro/gerenciamento de líderes, cadastro/gerenciamento de Pokémon e visualização dos líderes e suas equipes.
-- CRUD planejado: cadastrar, consultar, atualizar e excluir líderes e Pokémon de suas equipes. A revogação do título ocorre pela exclusão do líder. O comportamento da exclusão em relação aos Pokémon vinculados, as validações, os campos e os detalhes das interfaces serão definidos em especificações posteriores.
+- CRUD planejado: cadastrar, consultar, atualizar e excluir líderes e Pokémon de suas equipes. A revogação do título ocorre pela exclusão do líder.
 - O DER do League Scout já existe, mas o script SQL da aplicação ainda é o da AquaTech.
 - Fora do escopo: acesso administrativo pelos líderes, dados e estatísticas de batalha e múltiplas equipes por líder.
 
@@ -77,7 +77,7 @@ O ZIP também contém, fora da raiz da aplicação, `DER_LeagueScout.mwb`, `Docu
 - `pokemon`: id, nome, nivel, tipo_primario, tipo_secundario, data_registro, lider_ginasio_id.
 - `usuario_liga`: id, nome, email, senha.
 
-A FK `pokemon.lider_ginasio_id` referencia `lider_ginasio`. Cada líder pode ter vários Pokémon em uma única equipe, e cada Pokémon cadastrado pertence a um líder. A equipe é representada pelos Pokémon associados diretamente ao líder, sem tabela intermediária. Não definir automaticamente limites de equipe, unicidade ou comportamento de exclusão dos Pokémon vinculados. Não tratar o DER como banco já implantado. A atualização do arquivo DER e a implementação do SQL deverão ocorrer em requisição específica.
+A FK `pokemon.lider_ginasio_id` referencia `lider_ginasio`. Cada líder pode ter vários Pokémon em uma única equipe, e cada Pokémon cadastrado pertence a um líder. A equipe é representada pelos Pokémon associados diretamente ao líder, sem tabela intermediária. Não definir automaticamente limites de equipe ou unicidade. Não tratar o DER como banco já implantado. A atualização do arquivo DER e a implementação do SQL deverão ocorrer em requisição específica.
 
 ## Padrões de desenvolvimento
 
@@ -88,6 +88,21 @@ A FK `pokemon.lider_ginasio_id` referencia `lider_ginasio`. Cada líder pode ter
 - Preservar a composição da Home, as artes existentes, o mapa de Unova no login e Castelia City no cadastro, salvo solicitação explícita.
 - Reutilizar estilos e estruturas existentes quando apropriado; evitar refatorações não relacionadas à tarefa.
 - Na adaptação da persistência, utilizar consultas parametrizadas e não registrar senhas ou credenciais em logs. Não armazenar ou retornar senhas em texto puro. Qualquer mudança de dependência necessária deverá ser aprovada.
+
+### Identidade tipográfica
+
+O League Scout utiliza Montserrat e Inter como suas fontes oficiais.
+
+- Montserrat: títulos, botões, links de navegação e indicadores.
+- Inter: parágrafos, descrições, identificações de campos, inputs, placeholders e mensagens.
+
+As fontes são importadas por meio do Google Fonts e centralizadas no arquivo `public/css/estilo.css`.
+
+As novas interfaces deverão reutilizar as variáveis CSS `--fonte-titulo` e `--fonte-texto`, respeitando a hierarquia tipográfica estabelecida na REQ-002.
+
+Não deverão ser adicionadas novas famílias tipográficas sem autorização do responsável pelo projeto.
+
+A fonte Barlow permanece disponível exclusivamente para as páginas legadas da Web Data Viz que ainda dependem dela.
 
 ## Cuidados e restrições
 

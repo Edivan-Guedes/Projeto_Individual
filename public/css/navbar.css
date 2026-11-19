@@ -48,6 +48,18 @@
   font-weight: 800;
 }
 
+/* Tipografia dos links da Home: Montserrat 16/600.
+   O link ativo (.agora) mantém o destaque em 800. */
+body.pagina-home .navbar a {
+  font-family: var(--fonte-titulo);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+body.pagina-home .navbar .agora a {
+  font-weight: 800;
+}
+
 .navbar {
   width: 330px;
   display: flex;
@@ -60,7 +72,7 @@
 .navbar .botao-login {
   display: block;
   cursor: pointer;
-  font-family: "Barlow", sans-serif;
+  font-family: var(--fonte-titulo);
   font-weight: 600;
   font-size: 16px;
   color: #fff;
