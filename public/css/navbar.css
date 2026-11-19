@@ -1,5 +1,15 @@
+/* Estilos compartilhados da navbar do League Scout.
+   Arquivo único usado pelas páginas Home, Login e Cadastro. */
+
 :root {
   --tamanho-header: 80px;
+}
+
+/* Container onde o componente é injetado.
+   Reserva a altura e o fundo para evitar salto de layout durante o carregamento. */
+#navbar-container {
+  min-height: var(--tamanho-header);
+  background-color: #FFFF;
 }
 
 .header {
@@ -19,9 +29,9 @@
   color: #404040;
 }
 
-.header li{
+.header li {
   color: #404040;
-} 
+}
 
 .container-header {
   display: flex;
@@ -46,17 +56,47 @@
   list-style: none;
 }
 
-.navbar button {
+/* Botão Login: link estilizado como botão, sem <button> dentro de <a>. */
+.navbar .botao-login {
+  display: block;
   cursor: pointer;
   font-family: "Barlow", sans-serif;
-  border: 0;
-  text-align: center;
-  border-radius: 5px;
   font-weight: 600;
   font-size: 16px;
   color: #fff;
   background-color: #E33535;
+  border-radius: 5px;
+  text-align: center;
   width: 85px;
-  height: 20%;
   padding: 3px;
+}
+
+/* Separador entre os links e o botão de Login. */
+.nav-separador {
+  font-size: 30px;
+}
+
+/* Ícone de perfil do administrador logado. */
+.icone-perfil {
+  display: block;
+}
+
+.icone-perfil img {
+  display: block;
+  width: 40px;
+}
+
+/* Ícone de Home das páginas Login e Cadastro. */
+.icone-home img {
+  width: 100px;
+}
+
+/* Páginas internas (Login e Cadastro):
+   container um pouco mais estreito e navbar sem largura fixa. */
+body.pagina-interna .container-header {
+  width: 90%;
+}
+
+body.pagina-interna .navbar {
+  width: auto;
 }

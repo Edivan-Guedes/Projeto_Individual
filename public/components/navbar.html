@@ -1,0 +1,46 @@
+<!--
+  Componente compartilhado da navbar do League Scout.
+  Carregado por js/navbar.js nas páginas Home, Login e Cadastro.
+  Os caminhos são relativos à raiz do servidor (pasta public), o que permite
+  reutilizar este componente em páginas dentro de subpastas.
+
+  O JavaScript apenas exibe ou esconde os itens conforme a página e a sessão,
+  por isso todos os itens possíveis ficam neste único arquivo.
+-->
+<div class="header">
+  <div class="container-header">
+    <h1 class="logotipo"><img src="/assets/imgs/logotipo.png" alt="League Scout"></h1>
+
+    <ul class="navbar">
+      <!-- Itens exibidos somente na Home -->
+      <li id="nav-sobre-mim" class="agora">
+        <a href="#">Sobre mim</a>
+      </li>
+      <li id="nav-lideres">
+        <a href="/simulador.html">Líderes</a>
+      </li>
+      <li id="nav-separador" class="nav-separador">|</li>
+
+      <!-- Botão Login: exibido na Home sem sessão.
+           É um link estilizado como botão, sem <button> dentro de <a>. -->
+      <li id="nav-login">
+        <a href="/login.html" class="botao-login">Login</a>
+      </li>
+
+      <!-- Ícone de perfil: exibido na Home com sessão.
+           Pendente: o destino do dashboard ainda será definido pelo responsável. -->
+      <li id="nav-perfil">
+        <a href="#" class="icone-perfil">
+          <img src="/assets/imgs/icone_user.png" alt="Área administrativa">
+        </a>
+      </li>
+
+      <!-- Ícone de Home: exibido somente em Login e Cadastro -->
+      <li id="nav-home">
+        <a href="/index.html" class="icone-home">
+          <img src="/assets/imgs/icone_home.png" alt="Página inicial">
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

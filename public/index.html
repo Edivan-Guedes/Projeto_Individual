@@ -16,25 +16,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<body>
-    <div class="header">
-      <div class="container-header">
-        <h1 class="logotipo"><img src="../public/assets/imgs/logotipo.png"></h1>
-        <ul class="navbar">
-          <li class="agora">
-            <a href="#">Sobre mim</a>
-          </li>
-          <li>
-            <a href="simulador.html">Lideres</a>
-          </li>
-          <li style="font-size:30px;">|</li>
-          <li>
-            <a href="login.html"><button>Login</button></a>  
-          </li>
-        </ul>
-      </div>
-    </div>
-  
+<body class="pagina-home">
+    <!-- Navbar compartilhada: o componente é carregado por js/navbar.js -->
+    <div id="navbar-container"></div>
+
     <div class="banner">
       <div class="container">
         <h1 class="titulo">Uma Liga.</h1>
@@ -59,6 +44,11 @@
   
     <div class="footer">
     </div>
+
+    <script src="/js/navbar.js"></script>
+    <script>
+      carregarNavbar();
+    </script>
   </body>
 
 </html>

@@ -76,7 +76,6 @@ O ZIP também contém, fora da raiz da aplicação, `DER_LeagueScout.mwb`, `Docu
 - `lider_ginasio`: id, nome, sexo, cidade, tipo, insignia, data_registro.
 - `pokemon`: id, nome, nivel, tipo_primario, tipo_secundario, data_registro, lider_ginasio_id.
 - `usuario_liga`: id, nome, email, senha.
-- `time_lider`: entidade presente no DER preliminar, originalmente pensada para múltiplas equipes por líder. A proposta foi descartada; a tabela não integra a modelagem pretendida e não deverá ser criada no novo script SQL.
 
 A FK `pokemon.lider_ginasio_id` referencia `lider_ginasio`. Cada líder pode ter vários Pokémon em uma única equipe, e cada Pokémon cadastrado pertence a um líder. A equipe é representada pelos Pokémon associados diretamente ao líder, sem tabela intermediária. Não definir automaticamente limites de equipe, unicidade ou comportamento de exclusão dos Pokémon vinculados. Não tratar o DER como banco já implantado. A atualização do arquivo DER e a implementação do SQL deverão ocorrer em requisição específica.
 
@@ -99,8 +98,97 @@ A FK `pokemon.lider_ginasio_id` referencia `lider_ginasio`. Cada líder pode ter
 - Não expor nem versionar credenciais reais. Não executar comandos destrutivos, realizar commits ou enviar alterações ao repositório sem autorização.
 - O código legado contém consultas SQL interpoladas e logs de credenciais; não reproduzir essas práticas em novas funcionalidades. Propor correções específicas sem alterar áreas não solicitadas.
 
+## Limites de atuação da inteligência artificial
+
+O OpenCode será utilizado prioritariamente para auxiliar no desenvolvimento do front-end da aplicação League Scout.
+
+### Alterações permitidas
+
+- Criação e estilização de páginas utilizando HTML e CSS.
+- Implementação de interações visuais utilizando JavaScript.
+- Criação de componentes reutilizáveis.
+- Correção de problemas de layout e responsividade.
+- Implementação das interfaces descritas nos documentos de especificação.
+- Utilização temporária de dados simulados para validação visual.
+
+### Alterações restritas
+
+O desenvolvimento do back-end será realizado pelo responsável pelo projeto, com finalidade de aprendizado acadêmico.
+
+Portanto, a inteligência artificial não deverá, sem autorização explícita:
+
+- Criar ou modificar rotas da API.
+- Implementar ou modificar controllers e models.
+- Alterar scripts SQL ou a modelagem do banco de dados.
+- Modificar a lógica de autenticação.
+- Alterar configurações do servidor ou variáveis de ambiente.
+- Implementar regras de negócio no back-end.
+
+Caso uma implementação de front-end dependa de uma funcionalidade de back-end ainda inexistente, a inteligência artificial deverá informar essa dependência ao responsável pelo projeto, em vez de implementá-la automaticamente.
+
+## Restrições de complexidade e finalidade acadêmica
+
+O League Scout é um projeto individual acadêmico cujo objetivo também envolve o aprendizado e a aplicação dos conhecimentos adquiridos durante a graduação.
+
+Toda implementação realizada pela inteligência artificial deverá respeitar o nível de conhecimento do responsável pelo projeto.
+
+### Diretrizes obrigatórias
+
+- Priorizar soluções simples, legíveis e de fácil manutenção.
+- Utilizar estruturas de programação compatíveis com os conhecimentos e padrões já presentes no projeto.
+- Não adicionar frameworks, bibliotecas ou dependências sem autorização explícita.
+- Não utilizar técnicas avançadas de programação sem consultar previamente o responsável pelo projeto.
+- Evitar abstrações desnecessárias, estruturas excessivamente complexas e soluções que dificultem a compreensão do código.
+- Manter os nomes de variáveis e funções claros e coerentes com os padrões existentes.
+- Adicionar comentários explicando o funcionamento das implementações quando necessário.
+- Preservar a estrutura e os padrões de desenvolvimento da Web Data Viz quando aplicáveis.
+
+### Validação de novos conceitos
+
+Caso uma implementação necessite de um conceito, recurso ou técnica ainda não utilizada no projeto, a inteligência artificial deverá:
+
+1. Apresentar o conceito ao responsável pelo projeto.
+2. Explicar sua finalidade e funcionamento.
+3. Informar por que sua utilização seria necessária.
+4. Apresentar uma alternativa mais simples, quando possível.
+5. Aguardar a autorização antes de implementar.
+
+### Regra fundamental
+
+O responsável pelo projeto deverá ser capaz de compreender, explicar, modificar e reproduzir todo código implementado pela inteligência artificial.
+
+A simplicidade e a compreensão do código devem ser priorizadas em relação à sofisticação técnica da solução.
+
 ## Regra geral
 
 Antes de implementar, ler este documento e a especificação da requisição. Inspecionar os arquivos envolvidos e distinguir o estado atual do estado desejado. Apresentar um plano de implementação, identificando arquivos, dependências e possíveis impactos. Solicitar aprovação para mudanças significativas, novas dependências ou decisões não especificadas. Implementar somente o escopo aprovado, validar os critérios de aceitação e informar os arquivos alterados, testes realizados e pendências. Atualizar esta documentação apenas quando autorizado.
 
-> Versão 1.1 preliminar baseada no ZIP, no protótipo e nas decisões de escopo confirmadas pelo responsável. Requisitos acadêmicos obrigatórios, comportamento de exclusão dos Pokémon vinculados e detalhes das novas telas ainda aguardam confirmação.
+## Regras de exclusão e integridade referencial
+
+Cada líder de ginásio possui uma única equipe, composta pelos Pokémon vinculados ao seu registro no banco de dados.
+
+A associação entre líderes e Pokémon será realizada por meio de um relacionamento de um para muitos (1:N), utilizando uma chave estrangeira na tabela `pokemon`.
+
+### Exclusão de líderes
+
+- A exclusão de um líder representa a revogação de seu título perante a Liga Pokémon.
+- Ao excluir um líder, todos os Pokémon vinculados à sua equipe deverão ser excluídos automaticamente.
+- A exclusão em cascata será garantida pelo banco de dados MySQL, utilizando a cláusula `ON DELETE CASCADE` na definição da chave estrangeira.
+- Não deverão permanecer Pokémon sem um líder associado após a exclusão.
+
+### Exclusão de Pokémon
+
+- Um Pokémon poderá ser removido individualmente da equipe de um líder.
+- A exclusão de um Pokémon não deverá afetar o registro do líder nem os demais Pokémon de sua equipe.
+
+### Comportamento da interface
+
+- Antes de excluir um líder, a interface deverá solicitar a confirmação do administrador.
+- A mensagem de confirmação deverá informar que todos os Pokémon vinculados ao líder também serão excluídos.
+- A exclusão individual de um Pokémon também deverá solicitar confirmação.
+
+### Restrições de implementação
+
+A implementação da integridade referencial e da exclusão em cascata no banco de dados será de responsabilidade do desenvolvedor do projeto.
+
+A inteligência artificial deverá respeitar essa regra de negócio durante o desenvolvimento do front-end, sem modificar os scripts SQL ou implementar a lógica de exclusão no back-end sem autorização explícita.
