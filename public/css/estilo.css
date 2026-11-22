@@ -117,6 +117,170 @@ html {
     background-position: center calc(100% + 190px);
 }
 
+/* FOOTER INTERATIVO — HOME (REQ-003)
+   O cenário limpo (image_footer.png) é usado como fundo. Os personagens e o
+   link são elementos HTML separados, evitando duplicação na imagem.
+   A imagem tem margem lilás abaixo da grama equivalente a 10,4% da largura;
+   o deslocamento abaixo mantém a grama encostada na base do footer. */
+
+.footer-home {
+  position: relative;
+  height: 170px;
+  overflow: hidden;
+  background-color: #EEECFA;
+  background-image: url("../assets/imgs/image_footer.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center calc(100% + 10.4vw);
+}
+
+/* Personagens posicionados de forma absoluta: o hover não desloca o layout. */
+.footer-personagem {
+  position: absolute;
+  bottom: 0;
+  height: auto;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.footer-munna {
+  left: 7%;
+  bottom: -45px;
+  width: 220px;
+}
+
+.footer-musharna {
+  right: 6%;
+  bottom: -22px;
+  width: 260px;
+}
+
+/* Link central "Voltar ao início": seta e texto formam uma única área clicável. */
+.footer-voltar {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-50%);
+  color: #404040;
+  font-family: var(--fonte-titulo);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.footer-seta {
+  font-size: 30px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+/* Movimento apenas no hover do próprio personagem.
+   Em telas sem hover real (toque), os personagens ficam estáticos. */
+@media (hover: hover) and (pointer: fine) {
+  .footer-munna:hover,
+  .footer-musharna:hover {
+    transform: translateY(-10px);
+  }
+
+  .footer-voltar:hover .footer-seta {
+    transform: translateY(-3px);
+  }
+}
+
+/* Foco visível para navegação por teclado. */
+.footer-voltar:focus-visible {
+  outline: 3px solid #E33535;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+@media (max-width: 1024px) {
+  .footer-home {
+    height: 240px;
+  }
+
+  .footer-munna {
+    left: 6%;
+    bottom: -37px;
+    width: 180px;
+  }
+
+  .footer-musharna {
+    right: 5%;
+    bottom: -18px;
+    width: 215px;
+  }
+
+  .footer-voltar {
+    top: 30px;
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-home {
+    height: 190px;
+  }
+
+  .footer-munna {
+    left: 3%;
+    bottom: -20px;
+    width: 85px;
+  }
+
+  .footer-musharna {
+    right: 3%;
+    bottom: -10px;
+    width: 100px;
+  }
+
+  .footer-voltar {
+    top: 20px;
+    font-size: 14px;
+  }
+
+  .footer-seta {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 380px) {
+  .footer-munna {
+    width: 70px;
+  }
+
+  .footer-musharna {
+    width: 85px;
+  }
+
+  .footer-voltar {
+    font-size: 13px;
+  }
+}
+
+/* Respeita a preferência do usuário por menos movimento. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .footer-personagem,
+  .footer-seta {
+    transition: none;
+  }
+
+  .footer-munna:hover,
+  .footer-musharna:hover,
+  .footer-voltar:hover .footer-seta {
+    transform: none;
+  }
+}
+
 
 /* LOGIN */
 

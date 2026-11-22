@@ -17,6 +17,9 @@
 </head>
 
 <body class="pagina-home">
+    <!-- Alvo do link "Voltar ao início". Fica no topo real da página. -->
+    <div id="topo"></div>
+
     <!-- Navbar compartilhada: o componente é carregado por js/navbar.js -->
     <div id="navbar-container"></div>
 
@@ -42,8 +45,23 @@
       </div>
     </div>
   
-    <div class="footer">
-    </div>
+    <!-- Footer interativo da Home (REQ-003).
+         O cenário limpo é aplicado pelo CSS; personagens e link são
+         elementos HTML independentes, sem duplicação na imagem. -->
+    <footer class="footer-home">
+      <img class="footer-personagem footer-munna"
+           src="./assets/imgs/munna_fofa_em_tons_pastel.png"
+           alt="Munna">
+
+      <a class="footer-voltar" href="#topo">
+        <span class="footer-seta" aria-hidden="true">↑</span>
+        <span>Voltar ao início</span>
+      </a>
+
+      <img class="footer-personagem footer-musharna"
+           src="./assets/imgs/musharna_envolta_em_sonhos_pastel.png"
+           alt="Musharna">
+    </footer>
 
     <script src="/js/navbar.js"></script>
     <script>

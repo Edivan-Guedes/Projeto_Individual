@@ -207,3 +207,20 @@ A associação entre líderes e Pokémon será realizada por meio de um relacion
 A implementação da integridade referencial e da exclusão em cascata no banco de dados será de responsabilidade do desenvolvedor do projeto.
 
 A inteligência artificial deverá respeitar essa regra de negócio durante o desenvolvimento do front-end, sem modificar os scripts SQL ou implementar a lógica de exclusão no back-end sem autorização explícita.
+
+### Prioridade de resolução e responsividade
+
+O League Scout é um projeto acadêmico que será apresentado presencialmente à banca avaliadora, utilizando o computador do responsável pelo desenvolvimento.
+
+Por esse motivo, o desenvolvimento das interfaces deverá priorizar a experiência em computadores desktop, especialmente na resolução utilizada para a apresentação.
+
+Diretrizes:
+
+- Priorizar a organização, a legibilidade e a aparência visual na resolução de referência.
+- Não implementar adaptações para dispositivos móveis sem necessidade ou solicitação explícita.
+- Evitar media queries e regras de responsividade excessivas.
+- Garantir que os elementos principais permaneçam visíveis, sem cortes ou sobreposições na resolução de referência.
+- Preservar os ajustes visuais realizados manualmente pelo responsável pelo projeto.
+- Não comprometer a simplicidade do código para atender a resoluções que não fazem parte do objetivo da apresentação.
+
+A responsividade completa não constitui um requisito obrigatório para a versão acadêmica atual do League Scout.
