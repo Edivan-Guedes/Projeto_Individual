@@ -224,3 +224,11 @@ Diretrizes:
 - Não comprometer a simplicidade do código para atender a resoluções que não fazem parte do objetivo da apresentação.
 
 A responsividade completa não constitui um requisito obrigatório para a versão acadêmica atual do League Scout.
+
+A resolução de referência oficial do League Scout é **1920 × 1080 pixels (Full HD)**.
+
+Todas as novas interfaces e alterações visuais deverão ser desenvolvidas e validadas prioritariamente nessa resolução.
+
+A implementação de responsividade para dispositivos móveis não é obrigatória nesta versão acadêmica.
+
+O desenvolvimento deverá considerar também o nível de zoom de 100% do navegador e garantir a ausência de cortes, sobreposições e barras de rolagem horizontais indesejadas na resolução de referência.

@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/carrossel.css">
     <link rel="icon" href="./assets/icon/favicon2.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
@@ -31,6 +32,32 @@
           líderes de ginásio da região de Unova.</p>
       </div>
     </div>
+
+    <!-- Carrossel de líderes (REQ-004).
+         Os cards são criados pelo js/carrossel.js a partir dos
+         dados simulados; o HTML abaixo contém apenas a estrutura. -->
+    <section class="lideres" id="lideres">
+      <div class="container lideres-container">
+        <h2 class="lideres-titulo">Líderes de <span>Ginásio</span></h2>
+        <p class="lideres-subtitulo">
+          Conheça os líderes que comandam os ginásios da região de Unova.
+        </p>
+
+        <div class="carrossel">
+          <button class="carrossel-seta carrossel-anterior" type="button"
+                  aria-label="Líder anterior">&#10094;</button>
+
+          <div class="carrossel-janela">
+            <div class="carrossel-palco" id="carrossel-palco"></div>
+          </div>
+
+          <button class="carrossel-seta carrossel-proximo" type="button"
+                  aria-label="Próximo líder">&#10095;</button>
+        </div>
+
+        <p class="carrossel-status" id="carrossel-status" aria-live="polite"></p>
+      </div>
+    </section>
   
     <div class="sobre_mim" id="sobre-mim">
       <div class="container">
@@ -63,6 +90,7 @@
            alt="Musharna">
     </footer>
 
+    <script src="./js/carrossel.js"></script>
     <script src="/js/navbar.js"></script>
     <script>
       carregarNavbar();
