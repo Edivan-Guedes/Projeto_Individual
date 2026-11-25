@@ -1,0 +1,603 @@
+/* ==========================================================================
+   LEAGUE SCOUT — DASHBOARD ADMINISTRATIVA (REQ-005)
+   Estilos exclusivos de dashboard/liga-dashboard.html.
+   Não altera a Home, a navbar, o footer nem as páginas legadas da AquaTech.
+   Prioridade de layout: desktop em 1920 × 1080 (zoom 100%).
+   ========================================================================== */
+
+:root {
+  --dash-fundo: #f2f2f2;
+  --dash-sidebar: #2b2b2b;
+  --dash-sidebar-item: #3a3a3a;
+  --dash-card: #ffffff;
+  --dash-texto: #3d3d3d;
+  --dash-texto-suave: #6f6f6f;
+  --dash-borda: #e6e6e6;
+  --dash-vermelho: #e33535;
+  --dash-vermelho-escuro: #b91f1f;
+  --dash-verde: #2f9e5b;
+  --dash-rosa: #fdecec;
+  --dash-sidebar-largura: 280px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body.pagina-dashboard {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--dash-fundo);
+  color: var(--dash-texto);
+  font-family: var(--fonte-texto);
+}
+
+/* A classe .sr-only mantém o texto acessível sem exibi-lo na tela. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   SIDEBAR
+   ========================================================================== */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--dash-sidebar-largura);
+  padding: 28px 20px;
+  background-color: var(--dash-sidebar);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  z-index: 10;
+}
+
+/* O logotipo tem texto escuro; por isso fica sobre um cartão branco. */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  text-decoration: none;
+}
+
+.sidebar-logo img {
+  display: block;
+  width: 100%;
+  max-width: 190px;
+  height: auto;
+}
+
+.sidebar-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-left: 4px solid transparent;
+  border-radius: 12px;
+  color: #ececec;
+  font-family: var(--fonte-titulo);
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sidebar-link svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.sidebar-link.ativo {
+  background-color: #f4f4f4;
+  border-left-color: var(--dash-vermelho);
+  color: var(--dash-vermelho-escuro);
+}
+
+.sidebar-link.pendente {
+  background-color: var(--dash-sidebar-item);
+  color: #b9b9b9;
+  cursor: not-allowed;
+}
+
+.sidebar-link.pendente small {
+  margin-left: auto;
+  padding: 3px 6px;
+  border-radius: 6px;
+  background-color: #4a4a4a;
+  color: #d6d6d6;
+  font-family: var(--fonte-texto);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sidebar-logo:focus-visible,
+.sidebar-link:focus-visible {
+  outline: 3px solid var(--dash-vermelho);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   ÁREA PRINCIPAL
+   ========================================================================== */
+
+.dashboard-main {
+  margin-left: var(--dash-sidebar-largura);
+  min-height: 100vh;
+  padding: 30px 40px 26px;
+}
+
+.dashboard-titulo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 24px;
+  color: #2c2c2c;
+  font-family: var(--fonte-titulo);
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.dashboard-titulo-barra {
+  width: 8px;
+  height: 42px;
+  border-radius: 4px;
+  background-color: var(--dash-vermelho);
+}
+
+/* ==========================================================================
+   KPIs
+   ========================================================================== */
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  margin-bottom: 26px;
+}
+
+.kpi-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 126px;
+  padding: 20px 20px 18px;
+  border-radius: 12px;
+  background-color: var(--dash-card);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+/* Faixa vermelha superior dos cartões, como na referência visual. */
+.kpi-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 5px;
+  background-color: var(--dash-vermelho);
+}
+
+.kpi-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 12px;
+  background-color: var(--dash-rosa);
+  color: var(--dash-vermelho);
+  flex-shrink: 0;
+}
+
+.kpi-icone svg {
+  width: 30px;
+  height: 30px;
+}
+
+.kpi-conteudo {
+  min-width: 0;
+}
+
+.kpi-rotulo {
+  margin: 0 0 4px;
+  color: #4a4a4a;
+  font-family: var(--fonte-texto);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.kpi-valor {
+  margin: 0;
+  color: #262626;
+  font-family: var(--fonte-titulo);
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kpi-extra {
+  margin: 4px 0 0;
+  color: var(--dash-texto-suave);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+/* ==========================================================================
+   PAINÉIS: TABELA À ESQUERDA E GRÁFICO À DIREITA
+   ========================================================================== */
+
+.dashboard-paineis {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.painel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 22px 24px 20px;
+  border-radius: 14px;
+  background-color: var(--dash-card);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.painel-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.painel-titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: #2c2c2c;
+  font-family: var(--fonte-titulo);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.painel-titulo svg {
+  width: 22px;
+  height: 22px;
+  color: var(--dash-vermelho);
+  flex-shrink: 0;
+}
+
+/* Legenda textual do gráfico, exibida no cabeçalho do painel. */
+.grafico-legenda {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: auto;
+  flex-shrink: 0;
+  color: #404040;
+  font-family: var(--fonte-texto);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.grafico-legenda span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legenda-cor {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.legenda-cor.vitoria {
+  background-color: var(--dash-verde);
+}
+
+.legenda-cor.derrota {
+  background-color: var(--dash-vermelho);
+}
+
+/* ==========================================================================
+   TABELA DE LÍDERES
+   ========================================================================== */
+
+.tabela-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.tabela-lideres {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.tabela-lideres th {
+  padding: 11px 12px;
+  background-color: #efefef;
+  color: #3b3b3b;
+  font-family: var(--fonte-texto);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.tabela-lideres th:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.tabela-lideres th:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.tabela-lideres .coluna-nome {
+  width: 36%;
+}
+
+.tabela-lideres td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--dash-borda);
+  color: #4b4b4b;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.tabela-lideres tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.lider-nome {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.lider-nome strong {
+  color: #333333;
+  font-family: var(--fonte-texto);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Moldura circular da sprite. O fundo claro aparece caso a imagem falhe. */
+.lider-foto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.lider-sprite {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  /* Mantém a aparência pixelada das sprites, sem desfoque. */
+  image-rendering: pixelated;
+}
+
+/* A inicial só aparece quando a sprite não puder ser carregada. */
+.lider-inicial {
+  display: none;
+  color: var(--dash-vermelho-escuro);
+  font-family: var(--fonte-titulo);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.lider-foto.sem-imagem .lider-inicial {
+  display: flex;
+}
+
+.tipo-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background-color: #8a8a8a;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tipo-normal {
+  background-color: #8a8a8a;
+}
+
+.tipo-inseto {
+  background-color: #8a9a1f;
+}
+
+.tipo-eletrico {
+  background-color: #d9a400;
+  color: #3a2c00;
+}
+
+.tipo-terra {
+  background-color: #9a6b3f;
+}
+
+.tipo-voador {
+  background-color: #5b7fd4;
+}
+
+.tipo-dragao {
+  background-color: #5a4bb5;
+}
+
+.tipo-agua {
+  background-color: #2f7fd4;
+}
+
+.tabela-vazia {
+  padding: 28px 12px;
+  color: var(--dash-texto-suave);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   GRÁFICO
+   ========================================================================== */
+
+.painel-grafico {
+  min-height: 600px;
+}
+
+/* O Chart.js ocupa toda a área disponível abaixo do título do painel. */
+.grafico-area {
+  position: relative;
+  flex: 1;
+  min-height: 500px;
+}
+
+.grafico-vazio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 500px;
+  margin: 0;
+  color: var(--dash-texto-suave);
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.grafico-vazio[hidden] {
+  display: none;
+}
+
+/* ==========================================================================
+   NOTA SOBRE OS DADOS SIMULADOS
+   ========================================================================== */
+
+.nota-dados {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 0;
+  color: #7a7a7a;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.nota-dados strong {
+  padding: 2px 8px;
+  border-radius: 6px;
+  background-color: var(--dash-rosa);
+  color: var(--dash-vermelho-escuro);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   BREAKPOINT SIMPLES PARA TELAS MENORES
+   A prioridade continua sendo 1920 × 1080; isto evita cortes em notebooks.
+   ========================================================================== */
+
+@media (max-width: 1280px) {
+  :root {
+    --dash-sidebar-largura: 220px;
+  }
+
+  .sidebar {
+    padding: 22px 16px;
+  }
+
+  .sidebar-link {
+    font-size: 15px;
+    padding: 12px 14px;
+  }
+
+  .dashboard-main {
+    padding: 24px 24px 22px;
+  }
+
+  .dashboard-titulo {
+    font-size: 36px;
+  }
+
+  .dashboard-titulo-barra {
+    height: 34px;
+  }
+
+  .kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-paineis {
+    grid-template-columns: 1fr;
+  }
+
+  .painel-grafico {
+    min-height: 0;
+  }
+
+  .grafico-area,
+  .grafico-vazio {
+    min-height: 440px;
+  }
+}
+
+/* Respeita a preferência do usuário por menos animações. */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-link,
+  .kpi-card,
+  .painel {
+    transition: none;
+  }
+}

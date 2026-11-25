@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>League Scout | Dashboard</title>
+  <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+
+  <!-- estilo.css fornece as fontes oficiais (Montserrat/Inter) e as variáveis do projeto -->
+  <link rel="stylesheet" href="../css/estilo.css">
+  <!-- estilos exclusivos desta Dashboard, sem alterar a Home nem as páginas legadas -->
+  <link rel="stylesheet" href="../css/dashboard-liga.css">
+</head>
+
+<body class="pagina-dashboard">
+
+  <div class="dashboard-layout">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+      <a class="sidebar-logo" href="../index.html" title="Voltar para a Home">
+        <img src="../assets/imgs/logotipo.png" alt="League Scout">
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Navegação da dashboard">
+        <ul>
+          <li>
+            <a class="sidebar-link ativo" href="./liga-dashboard.html" aria-current="page">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              Líderes
+            </a>
+          </li>
+          <li>
+            <!-- Página de Pokémon ainda não existe: item desabilitado, sem rota inventada. -->
+            <span class="sidebar-link pendente" aria-disabled="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                aria-hidden="true">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M3 12h18"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              Pokémon
+              <small>em breve</small>
+            </span>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- ================= CONTEÚDO PRINCIPAL ================= -->
+    <main class="dashboard-main">
+
+      <header class="dashboard-header">
+        <h1 class="dashboard-titulo">
+          <span class="dashboard-titulo-barra" aria-hidden="true"></span>
+          Dashboard
+        </h1>
+      </header>
+
+      <!-- ================= QUATRO KPIs ================= -->
+      <section class="kpis" aria-label="Indicadores da dashboard">
+
+        <article class="kpi-card">
+          <div class="kpi-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="17" rx="2"></rect>
+              <path d="M16 2v4"></path>
+              <path d="M8 2v4"></path>
+              <path d="M3 10h18"></path>
+            </svg>
+          </div>
+          <div class="kpi-conteudo">
+            <p class="kpi-rotulo">Primeiro líder cadastrado</p>
+            <p class="kpi-valor" id="kpi-primeiro">—</p>
+            <p class="kpi-extra" id="kpi-primeiro-extra">—</p>
+          </div>
+        </article>
+
+        <article class="kpi-card">
+          <div class="kpi-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="17" rx="2"></rect>
+              <path d="M16 2v4"></path>
+              <path d="M8 2v4"></path>
+              <path d="M3 10h18"></path>
+              <path d="m9 15 2 2 4-4"></path>
+            </svg>
+          </div>
+          <div class="kpi-conteudo">
+            <p class="kpi-rotulo">Último líder cadastrado</p>
+            <p class="kpi-valor" id="kpi-ultimo">—</p>
+            <p class="kpi-extra" id="kpi-ultimo-extra">—</p>
+          </div>
+        </article>
+
+        <article class="kpi-card">
+          <div class="kpi-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <div class="kpi-conteudo">
+            <p class="kpi-rotulo">Líderes cadastrados</p>
+            <p class="kpi-valor" id="kpi-lideres">—</p>
+            <p class="kpi-extra" id="kpi-lideres-extra">—</p>
+          </div>
+        </article>
+
+        <article class="kpi-card">
+          <div class="kpi-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M3 12h18"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </div>
+          <div class="kpi-conteudo">
+            <p class="kpi-rotulo">Pokémon cadastrados</p>
+            <p class="kpi-valor" id="kpi-pokemon">—</p>
+            <p class="kpi-extra" id="kpi-pokemon-extra">—</p>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- ================= TABELA + GRÁFICO ================= -->
+      <div class="dashboard-paineis">
+
+        <!-- Tabela de líderes (coluna esquerda) -->
+        <section class="painel painel-tabela" aria-labelledby="titulo-tabela">
+          <header class="painel-cabecalho">
+            <h2 class="painel-titulo" id="titulo-tabela">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              Líderes cadastrados
+            </h2>
+          </header>
+
+          <div class="tabela-wrapper">
+            <table class="tabela-lideres">
+              <caption class="sr-only">Líderes de ginásio cadastrados na Liga Pokémon</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="coluna-nome">Nome</th>
+                  <th scope="col">Cidade</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Insígnia</th>
+                </tr>
+              </thead>
+              <!-- As linhas são criadas pelo JavaScript a partir dos dados simulados. -->
+              <tbody id="tabela-lideres-corpo"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Gráfico de vitórias e derrotas (coluna direita) -->
+        <section class="painel painel-grafico" aria-labelledby="titulo-grafico">
+          <header class="painel-cabecalho">
+            <h2 class="painel-titulo" id="titulo-grafico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 20V10"></path>
+                <path d="M10 20V4"></path>
+                <path d="M16 20v-7"></path>
+                <path d="M22 20H2"></path>
+              </svg>
+              Vitórias e derrotas dos líderes
+            </h2>
+
+            <!-- Legenda em HTML: textual, acessível e sempre visível. -->
+            <div class="grafico-legenda" aria-label="Legenda do gráfico">
+              <span><i class="legenda-cor vitoria" aria-hidden="true"></i>Vitórias</span>
+              <span><i class="legenda-cor derrota" aria-hidden="true"></i>Derrotas</span>
+            </div>
+          </header>
+
+          <!-- O Chart.js desenha o gráfico dentro deste canvas. -->
+          <div class="grafico-area" id="grafico-area">
+            <canvas id="grafico-lideres"
+              role="img"
+              aria-label="Gráfico de barras horizontais comparando vitórias e derrotas de cada líder"
+              aria-describedby="grafico-descricao"></canvas>
+          </div>
+
+          <p class="sr-only" id="grafico-descricao">
+            O gráfico apresenta duas barras por líder: vitórias em verde e derrotas
+            em vermelho. A legenda identifica as duas séries e o eixo horizontal
+            mostra a quantidade inteira de batalhas.
+          </p>
+
+          <!-- Mensagem exibida quando não há dados ou o Chart.js não carrega. -->
+          <p class="grafico-vazio" id="grafico-vazio" hidden></p>
+        </section>
+
+      </div>
+
+      <p class="nota-dados">
+        <strong>Dados simulados</strong>
+        Ordem de cadastro, datas, vitórias, derrotas, insígnias e quantidade de Pokémon
+        são demonstrativos e não representam registros reais do banco. O limite de
+        Pokémon segue a regra de 8 líderes × 6 Pokémon por equipe = 48.
+      </p>
+
+    </main>
+  </div>
+
+  <!-- Chart.js: mesma biblioteca utilizada nas aulas e no dashboard legado do projeto. -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/dashboard-liga.js"></script>
+</body>
+
+</html>
